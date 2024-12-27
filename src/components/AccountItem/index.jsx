@@ -10,7 +10,7 @@ function AccountItem() {
         <>
             <div className={cx('wrapper')}>
                 <span className={cx('avatar')}>
-                    <img src="public\vite.svg" alt="Username" />
+                    <img src="vite.svg" alt="Username" />
                 </span>
                 <div className={cx('info')}>
                     <h4 className={cx('name')}>

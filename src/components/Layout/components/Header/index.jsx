@@ -6,8 +6,9 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapped } from '~/components/Popper';
 import { useState, useEffect } from 'react';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
-const { IoMdCloseCircle, BiLoaderCircle, FaSearch } = icons;
+const { IoMdCloseCircle, BiLoaderCircle, FaSearch, MdLogin } = icons;
 
 const cx = classNames.bind(styles);
 const logo = images.logo;
@@ -55,7 +56,12 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button text>Upload</Button>
+                    <Button primary icon={<MdLogin />}>
+                        Login
+                    </Button>
+                </div>
             </div>
         </header>
     );
