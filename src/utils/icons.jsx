@@ -1,4 +1,4 @@
-import { IoMdCloseCircle } from 'react-icons/io';
+import { IoMdCloseCircle, IoMdArrowRoundBack } from 'react-icons/io';
 import { BiLoaderCircle } from 'react-icons/bi';
 import { FaSearch, FaRegQuestionCircle } from 'react-icons/fa';
 import { PiSealCheckFill } from 'react-icons/pi';
@@ -16,6 +16,7 @@ const icons = {
     MdLanguage,
     FaRegQuestionCircle,
     CgKeyboard,
+    IoMdArrowRoundBack,
 };
 
 export default icons;

@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { ToastContainer, toast } from 'react-toastify';
 
 const { IoMdCloseCircle, BiLoaderCircle, FaSearch, MdLogin, CiMenuKebab, MdLanguage, FaRegQuestionCircle, CgKeyboard } =
     icons;
@@ -19,6 +20,21 @@ const MENU_ITEMS = [
     {
         icon: <MdLanguage />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ],
+        },
     },
     {
         icon: <FaRegQuestionCircle />,
@@ -33,12 +49,32 @@ const MENU_ITEMS = [
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+    const notify = (content) => {
+        switch (content) {
+            case 'en': {
+                return toast('English is showing');
+            }
+            case 'vi': {
+                return toast('Tiếng Việt sẽ sớm được cập nhật');
+            }
+        }
+    };
 
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    // handle logic onChange()
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language': {
+                notify(menuItem.code);
+                break;
+            }
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -81,13 +117,14 @@ function Header() {
                         Login
                     </Button>
                     {/* ⋮ */}
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('ri-menu')}>
                             <CiMenuKebab />
                         </button>
                     </Menu>
                 </div>
             </div>
+            <ToastContainer autoClose={1500} />;
         </header>
     );
 }
