@@ -1,8 +1,10 @@
 import { IoMdCloseCircle } from 'react-icons/io';
 import { BiLoaderCircle } from 'react-icons/bi';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaRegQuestionCircle } from 'react-icons/fa';
 import { PiSealCheckFill } from 'react-icons/pi';
-import { MdLogin } from 'react-icons/md';
+import { MdLogin, MdLanguage } from 'react-icons/md';
+import { CiMenuKebab } from 'react-icons/ci';
+import { CgKeyboard } from 'react-icons/cg';
 
 const icons = {
     IoMdCloseCircle,
@@ -10,6 +12,10 @@ const icons = {
     FaSearch,
     PiSealCheckFill,
     MdLogin,
+    CiMenuKebab,
+    MdLanguage,
+    FaRegQuestionCircle,
+    CgKeyboard,
 };
 
 export default icons;
