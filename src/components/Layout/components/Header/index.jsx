@@ -3,47 +3,31 @@ import classNames from 'classnames/bind';
 import images from '~/assets/images';
 import icons from '~/utils/icons';
 import iconsTiktok from '~/components/Icons';
-import TippyHeadless from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { useState, useEffect } from 'react';
-import AccountItem from '~/components/AccountItem';
+import { useState } from 'react';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import { toast } from 'react-toastify';
 
 import 'tippy.js/dist/tippy.css';
-import { animateFill } from 'tippy.js';
 import 'tippy.js/dist/backdrop.css';
 import 'tippy.js/animations/shift-away.css';
 import 'tippy.js/dist/svg-arrow.css';
 
 import { MENU_ITEMS } from './Const';
 import Image from '~/components/Image';
+import Search from '~/components/Search';
 
-const {
-    IoMdCloseCircle,
-    BiLoaderCircle,
-    FaSearch,
-    MdLogin,
-    CiMenuKebab,
-    AiOutlineCloudUpload,
-    SlPaperPlane,
-    BiMessageAltMinus,
-    GoPerson,
-    CiDollar,
-    CiSettings,
-    MdLogout,
-} = icons;
+const { MdLogin, CiMenuKebab, GoPerson, CiDollar, CiSettings, MdLogout } = icons;
 
-const { InboxIcon, MessageIcon, SearchIcon, UploadIcon } = iconsTiktok;
+const { InboxIcon, MessageIcon, UploadIcon } = iconsTiktok;
 
 const cx = classNames.bind(styles);
 const { logo } = images;
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const [currentUser, setCurrentUser] = useState(false);
+
     const notify = (content) => {
         switch (content) {
             case 'en': {
@@ -111,64 +95,10 @@ function Header() {
                     <img src={logo} alt="Logo Tiktok" />
                 </div>
                 {/*  */}
-                <TippyHeadless
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellCheck={false} />
-                        <button className={cx('ri-close')}>
-                            <IoMdCloseCircle />
-                        </button>
-                        <span className={cx('ri-loader')}>
-                            <BiLoaderCircle />
-                        </span>
-
-                        <button className={cx('ri-search')}>
-                            <FaSearch />
-                        </button>
-                    </div>
-                </TippyHeadless>
-
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            {/* <div>
-                                <Tippy
-                                    content="Upload video"
-                                    placement="bottom"
-                                    animateFill={true}
-                                    plugins={[animateFill]}
-                                    arrow={true}
-                                >
-                                    <button className={cx('ri-upload')}>
-                                        <AiOutlineCloudUpload />
-                                    </button>
-                                </Tippy>
-                                <Tippy
-                                    content="Send message"
-                                    placement="bottom"
-                                    animateFill={true}
-                                    plugins={[animateFill]}
-                                >
-                                    <button className={cx('ri-plane')}>
-                                        <SlPaperPlane />
-                                    </button>
-                                </Tippy>
-                                <button className={cx('ri-message')}>
-                                    <BiMessageAltMinus />
-                                </button>
-                            </div> */}
                             <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <UploadIcon />
