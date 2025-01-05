@@ -19,7 +19,7 @@ import Image from '~/components/Image';
 import Search from '~/components/Search';
 import { Link } from 'react-router';
 
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 const { MdLogin, CiMenuKebab, GoPerson, CiDollar, CiSettings, MdLogout } = icons;
 
@@ -94,7 +94,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={logo} alt="Logo Tiktok" />
                 </Link>
                 {/*  */}

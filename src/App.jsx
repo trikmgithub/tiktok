@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router';
 import { publicRoutes } from '~/routes';
-import { DefaultLayout } from './components/Layout';
+import { DefaultLayout } from './layouts';
 import { Fragment } from 'react';
 import { ToastContainer } from 'react-toastify';
 

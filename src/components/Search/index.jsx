@@ -7,7 +7,7 @@ import AccountItem from '~/components/AccountItem';
 import { useState, useEffect, useRef } from 'react';
 import icons from '~/utils/icons';
 import { useDebounce } from '~/hooks';
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchServices from '~/services/searchServices';
 
 const { SearchIcon } = iconsTiktok;
 
@@ -65,12 +65,12 @@ function Search() {
             <TippyHeadless
                 // appendTo={() => document.body}
                 interactive
-                visible={showResult && searchResult.length > 0}
+                visible={showResult && searchResult?.length > 0}
                 render={(attrs) => (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
-                            {searchResult.map((result) => (
+                            {searchResult?.map((result) => (
                                 <AccountItem key={result.id} data={result} />
                             ))}
                         </PopperWrapper>
